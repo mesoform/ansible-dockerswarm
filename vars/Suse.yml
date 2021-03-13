@@ -7,4 +7,5 @@ default_docker_dependencies: []
 containerd_package_name: containerd
 skip_containerd: true
 skip_docker_py: true
+skip_cli: true
 docker_package_name: docker
