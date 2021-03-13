@@ -4,3 +4,4 @@ python_pip_packages:
   - python-pip
 
 default_docker_dependencies: []
+containerd_package_name: "containerd"
