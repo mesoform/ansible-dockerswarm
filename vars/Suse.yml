@@ -6,4 +6,5 @@ python_pip_packages:
 default_docker_dependencies: []
 containerd_package_name: containerd
 skip_containerd: true
+skip_docker_py: true
 docker_package_name: docker
