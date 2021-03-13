@@ -1,0 +1,6 @@
+---
+
+python_pip_packages:
+  - python-pip
+
+default_docker_dependencies: []
