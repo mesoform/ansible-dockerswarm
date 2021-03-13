@@ -4,5 +4,6 @@ python_pip_packages:
   - python-pip
 
 default_docker_dependencies: []
-containerd_package_name: "containerd"
+containerd_package_name: containerd
 skip_containerd: true
+docker_package_name: docker-ce

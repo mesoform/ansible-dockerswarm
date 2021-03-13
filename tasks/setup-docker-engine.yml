@@ -10,7 +10,7 @@
     - name: Prefix the Docker package version with the correct separator on Debian.
       set_fact:
         _docker_package_version: "={{ docker_package_version }}"
-      when: ansible_os_family == 'Debian'
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'Suse'
 
   when: docker_package_version | length > 0
 
