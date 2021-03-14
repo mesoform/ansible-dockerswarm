@@ -58,6 +58,8 @@
     group: root
     mode: 0640
   notify: restart docker
+  tags:
+    - docker_daemon_config
 
 - name: Enable the Docker daemon service and start it.
   service:
