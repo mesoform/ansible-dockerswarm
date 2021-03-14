@@ -13,10 +13,10 @@
   when: docker_swarm_network is defined and docker_swarm_network | ipaddr('net')
 
 - name: Check if "Swarm Mode" is enabled.
-  community.docker.docker_swarm_info:
+  community.docker.docker_host_info:
   check_mode: no
   changed_when: false
-  register: docker_swarm_info
+  register: docker_info
   tags:
     - skip_ansible_lint  # Suppressing the linter
 
@@ -24,7 +24,7 @@
   shell: docker swarm init
         --listen-addr {{ docker_swarm_addr }}:{{ docker_swarm_port }}
         --advertise-addr {{ docker_swarm_addr }}
-  when: "docker_swarm_info is not defined
+  when: "docker_info.host_info.Swarm is not defined
     and inventory_hostname == groups['docker_swarm_manager'][0]"
   tags:
     - skip_ansible_lint  # Suppressing the linter
@@ -67,7 +67,7 @@
         --token "{{ docker_worker_token.stdout }}"
         {{ docker_manager_address }}
   changed_when: false
-  when: "docker_swarm_info is not defined
+  when: "docker_info.host_info.Swarm is not defined
     and 'docker_swarm_worker' in group_names
     and 'docker_swarm_manager' not in group_names"
   tags:
@@ -80,7 +80,7 @@
         --token "{{ docker_manager_token.stdout }}"
         {{ docker_manager_address }}
   changed_when: false
-  when: "docker_swarm_info is not defined
+  when: "docker_info.host_info.Swarm is not defined
     and 'docker_swarm_manager' in group_names
     and inventory_hostname != groups['docker_swarm_manager'][0]"
   tags:
@@ -88,7 +88,7 @@
 
 - name: Replace swarm labels with defined labels
   community.docker.docker_node:
-    hostname: "{{ docker_swarm_info.swarm_facts.ID }}"
+    hostname: "{{ docker_info.host_info.Swarm.Cluster.NodeID }}"
     labels_state: replace
     labels: "{{ swarm_labels  | default({}) }}"
   tags:
