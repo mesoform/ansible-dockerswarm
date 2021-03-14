@@ -33,7 +33,7 @@
   include_tasks: setup-docker-engine.yml
   when: not skip_engine
 
--name: Install the Docker CLI
+- name: Install the Docker CLI
   include_tasks: setup-docker-cli.yml
   when: not skip_cli
 
