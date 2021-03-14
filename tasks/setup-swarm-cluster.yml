@@ -88,7 +88,7 @@
 
 - name: Replace swarm labels with defined labels
   community.docker.docker_node:
-    hostname: "{{ docker_info.host_info.Swarm.Cluster.NodeID }}"
+    hostname: "{{ docker_info.host_info.Swarm.NodeID }}"
     labels_state: replace
     labels: "{{ swarm_labels  | default({}) }}"
   tags:
