@@ -88,7 +88,7 @@
 
 - name: Replace swarm labels with defined labels
   community.docker.docker_node:
-  labels_state: replace
-  labels: "{{ swarm_labels  | default({}) }}"
+    labels_state: replace
+    labels: "{{ swarm_labels  | default({}) }}"
   tags:
     - swarm_labels
