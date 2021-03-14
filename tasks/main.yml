@@ -18,7 +18,12 @@
   include_tasks: "repo-{{ ansible_os_family }}.yml"
   when: not skip_repo
 
-# Install the Docker dependencies
+- name: Install Ansible Docker dependencies
+  package:
+    name: "{{ ansible_dependencies }}"
+    state: present
+  when: not skip_containerd or not skip_engine
+
 - name: Install Docker dependencies.
   package:
     name: "{{ docker_dependencies }}"
