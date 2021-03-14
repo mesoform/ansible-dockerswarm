@@ -6,6 +6,7 @@
          --format {% raw %}'{{ range $key, $value := .Spec.Labels }}{{ printf "%s\n" $key }}{{ end }}'{% endraw %}
          {{ ansible_fqdn|lower }}
   register: docker_swarm_labels
+  check_mode: no
   changed_when: false
   delegate_to: "{{ groups['docker_swarm_manager'][0] }}"
   delegate_facts: true
