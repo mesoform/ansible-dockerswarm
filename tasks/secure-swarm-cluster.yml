@@ -1,0 +1,9 @@
+- name: check if CA is setup
+- name: create CA
+  when: ca not setup
+- name: check if server private key exists
+- name: create server private key 
+  when: server_private_key not exists
+- name: check if server cert exists
+- name: create server cert
+  when: server_cert not exists
