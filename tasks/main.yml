@@ -45,6 +45,9 @@
 - block:
   - name: Setup the Docker Swarm Cluster
     include_tasks: setup-swarm-cluster.yml
+  - name: Secure Swarm cluster
+    include_tasks: secure-swarm-cluster.yml
+    when: not skip_secure_swarm
   when: not skip_swarm
 
 - name: Add Docker admin users to the Docker group
