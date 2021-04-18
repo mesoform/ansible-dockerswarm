@@ -167,7 +167,7 @@ You can define labels by `swarm_labels` variable, e.g:
 
     $ cat inventory
     ...
-    [docker_swarm_manager]
+    [docker_swarm_managers]
     swarm-01 swarm_labels=deploy
 
     [docker_swarm_worker]
@@ -202,7 +202,7 @@ Example Playbook
     swarm-02
     swarm-03
 
-    [docker_swarm_manager]
+    [docker_swarm_leader]
     swarm-01 swarm_labels=deploy
 
     [docker_swarm_worker]

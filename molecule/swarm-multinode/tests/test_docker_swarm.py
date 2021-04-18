@@ -4,7 +4,7 @@ import testinfra.utils.ansible_runner
 runner = testinfra.utils.ansible_runner.AnsibleRunner(os.environ['MOLECULE_INVENTORY_FILE'])
 
 ALL_HOSTS = runner.get_hosts('all')
-MANAGER_HOSTS = runner.get_hosts('docker_swarm_manager')
+MANAGER_HOSTS = runner.get_hosts('docker_swarm_managers')
 WORKER_HOSTS = runner.get_hosts('docker_swarm_worker')
 
 testinfra_hosts = ALL_HOSTS
