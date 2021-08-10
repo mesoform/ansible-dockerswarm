@@ -22,7 +22,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     command: "/usr/sbin/init"
     groups:
-      - docker_swarm_manager
+      - docker_swarm_managers
 
   - name: dockerswarm-centos-8
     image: centos:8

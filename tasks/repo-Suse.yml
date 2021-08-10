@@ -1,0 +1,10 @@
+---
+- name: Add the Docker Zypper repository.
+  community.general.zypper_repository:
+    repo: "{{ docker_repo['zypper_repo'] }}"
+    name: "{{ docker_repo['name'] }}"
+    state: present
+    auto_import_keys: yes
+    overwrite_multiple: yes
+    runrefresh: yes
+  when: ansible_distribution == "openSUSE Leap"
