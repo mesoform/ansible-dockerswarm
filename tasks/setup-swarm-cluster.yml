@@ -12,7 +12,7 @@
       gateway: "{{ docker_swarm_network | ipaddr('net') | ipaddr('1') | ipaddr('ip') }}"
   when: docker_swarm_network is defined and docker_swarm_network | ipaddr('net')
 
-- name: Check if "Swarm Mode" is enabled.
+- name: Get docker host info
   community.docker.docker_host_info:
   check_mode: no
   changed_when: false
@@ -72,6 +72,7 @@
     and 'docker_swarm_managers' not in group_names"
   tags:
     - skip_ansible_lint  # Suppressing the linter
+  notify: refresh docker host info
 
 - name: Join the pending Swarm manager nodes.
   shell: docker swarm join
@@ -85,11 +86,18 @@
     and inventory_hostname != groups['docker_swarm_leader'][0]"
   tags:
     - skip_ansible_lint  # Suppressing the linter
+  notify: refresh docker host info
+
+- name: Flush handlers
+  meta: flush_handlers
 
 - name: Replace swarm labels with defined labels
   community.docker.docker_node:
     hostname: "{{ docker_info.host_info.Swarm.NodeID }}"
     labels_state: replace
     labels: "{{ swarm_labels  | default({}) }}"
+  when: "docker_info.host_info.Swarm.Cluster is defined
+      and 'docker_swarm_managers' in group_names"
   tags:
     - swarm_labels
+  notify: refresh docker host info
