@@ -46,7 +46,7 @@
   delegate_to: "{{ groups['docker_swarm_leader'][0] }}"
   delegate_facts: true
   when: "'docker_swarm_managers' in group_names
-    and inventory_hostname != groups['docker_swarm_managers'][0]"
+    and inventory_hostname == groups['docker_swarm_leader'][0]"
   tags:
     - skip_ansible_lint  # Suppressing the linter
 
