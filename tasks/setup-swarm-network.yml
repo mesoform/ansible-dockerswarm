@@ -1,35 +1,30 @@
 ---
 - name: docker firewalld
   block:
+  ## Use raw because of python dependency issues resulting in
+  # fatal: [lab2]: FAILED! => changed=false
+  #  msg: 'Python Module not found: firewalld and its python module are required for this module,
+  # version 0.2.11 or newer required (0.3.9 or newer for offline operations)'
+  #
+  ## Should be:
+  # ansible.posix.firewalld:
+     #      port: 4789/udp
+     #      permanent: yes
+     #      state: enabled
   - name: open docker api port on 2376/tcp
-    ansible.posix.firewalld:
-      port: 2376/tcp
-      permanent: yes
-      state: enabled
+    raw: firewall-cmd --add-port=2376/tcp --permanent
 
   - name: open docker Swarm management port on 2377/tcp
-    ansible.posix.firewalld:
-      port: 2377/tcp
-      permanent: yes
-      state: enabled
+    raw: firewall-cmd --add-port=2376/tcp --permanent
 
   - name: open docker Swarm overlay port on 7946/tcp
-    ansible.posix.firewalld:
-      port: 7946/tcp
-      permanent: yes
-      state: enabled
+    raw: firewall-cmd --add-port=2377/tcp --permanent
 
   - name: open docker Swarm overlay port on 7946/udp
-    ansible.posix.firewalld:
-      port: 7946/udp
-      permanent: yes
-      state: enabled
+    raw: firewall-cmd --add-port=7946/udp --permanent
 
   - name: open docker Swarm overlay port on 4789/udp
-    ansible.posix.firewalld:
-      port: 4789/udp
-      permanent: yes
-      state: enabled
+    raw: firewall-cmd --add-port=4789/udp --permanent
   when: ansible_distribution == "openSUSE Leap"
 
 - name: Create a custom Swarm network.
