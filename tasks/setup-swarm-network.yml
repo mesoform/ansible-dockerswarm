@@ -12,20 +12,26 @@
      #      permanent: yes
      #      state: enabled
   - name: open docker api port on 2376/tcp
-    raw: firewall-cmd --add-port=2376/tcp --permanent
+    raw: firewall-cmd --zone=docker --add-port=2376/tcp --permanent
+    changed_when: '"ALREADY_ENABLED" not in output.stdout'
 
   - name: open docker Swarm management port on 2377/tcp
-    raw: firewall-cmd --add-port=2376/tcp --permanent
+    raw: firewall-cmd --zone=docker --add-port=2376/tcp --permanent
+    changed_when: '"ALREADY_ENABLED" not in output.stdout'
 
   - name: open docker Swarm overlay port on 7946/tcp
-    raw: firewall-cmd --add-port=2377/tcp --permanent
+    raw: firewall-cmd --zone=docker --add-port=2377/tcp --permanent
+    changed_when: '"ALREADY_ENABLED" not in output.stdout'
 
   - name: open docker Swarm overlay port on 7946/udp
     raw: firewall-cmd --add-port=7946/udp --permanent
+    changed_when: '"ALREADY_ENABLED" not in output.stdout'
 
   - name: open docker Swarm overlay port on 4789/udp
     raw: firewall-cmd --add-port=4789/udp --permanent
+    changed_when: '"ALREADY_ENABLED" not in output.stdout'
   when: ansible_distribution == "openSUSE Leap"
+  notify: reload firewalld
 
 - name: Create a custom Swarm network.
   docker_network:

@@ -17,3 +17,9 @@
     register: docker_info
     tags:
       - skip_ansible_lint  # Suppressing the linter
+
+- name: reload firewalld
+  raw: firewall-cmd --reload
+  check_mode: no
+  changed_when: false
+  listen: reload firewalld
