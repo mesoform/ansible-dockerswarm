@@ -48,6 +48,7 @@
 
 - block:
   - name: Setup the Docker Swarm Cluster
+    include_tasks: setup-swarm-network.yml
     include_tasks: setup-swarm-cluster.yml
   when: not skip_swarm
   tags:

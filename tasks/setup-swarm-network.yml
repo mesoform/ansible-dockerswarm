@@ -1,0 +1,45 @@
+---
+- name: docker firewalld
+  block:
+  - name: open docker api port on 2376/tcp
+    ansible.posix.firewalld:
+      port: 2376/tcp
+      permanent: yes
+      state: enabled
+
+  - name: open docker Swarm management port on 2377/tcp
+    ansible.posix.firewalld:
+      port: 2377/tcp
+      permanent: yes
+      state: enabled
+
+  - name: open docker Swarm overlay port on 7946/tcp
+    ansible.posix.firewalld:
+      port: 7946/tcp
+      permanent: yes
+      state: enabled
+
+  - name: open docker Swarm overlay port on 7946/udp
+    ansible.posix.firewalld:
+      port: 7946/udp
+      permanent: yes
+      state: enabled
+
+  - name: open docker Swarm overlay port on 4789/udp
+    ansible.posix.firewalld:
+      port: 4789/udp
+      permanent: yes
+      state: enabled
+  when: ansible_distribution == "openSUSE Leap"
+
+- name: Create a custom Swarm network.
+  docker_network:
+    name: docker_gwbridge
+    driver_options:
+      com.docker.network.bridge.enable_icc: "false"
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+      com.docker.network.bridge.name: docker_gwbridge
+    ipam_options:
+      subnet: "{{ docker_swarm_network }}"
+      gateway: "{{ docker_swarm_network | ipaddr('net') | ipaddr('1') | ipaddr('ip') }}"
+  when: docker_swarm_network is defined and docker_swarm_network | ipaddr('net')
