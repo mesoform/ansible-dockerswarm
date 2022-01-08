@@ -15,7 +15,7 @@
     raw: firewall-cmd --zone=docker --add-port=2376/tcp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
-      - result.rc != 0
+      - output.rc != 0
       - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
@@ -23,7 +23,7 @@
     raw: firewall-cmd --zone=docker --add-port=2376/tcp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
-      - result.rc != 0
+      - output.rc != 0
       - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
@@ -31,7 +31,7 @@
     raw: firewall-cmd --zone=docker --add-port=2377/tcp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
-      - result.rc != 0
+      - output.rc != 0
       - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
@@ -39,7 +39,7 @@
     raw: firewall-cmd --add-port=7946/udp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
-      - result.rc != 0
+      - output.rc != 0
       - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
@@ -47,7 +47,7 @@
     raw: firewall-cmd --add-port=4789/udp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
-      - result.rc != 0
+      - output.rc != 0
       - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
   when: ansible_distribution == "openSUSE Leap"
