@@ -16,7 +16,7 @@
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - result.rc != 0
-      - '"FirewallD is not running" not in output.stdout''
+      - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
   - name: open docker Swarm management port on 2377/tcp
@@ -24,7 +24,7 @@
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - result.rc != 0
-      - '"FirewallD is not running" not in output.stdout''
+      - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
   - name: open docker Swarm overlay port on 7946/tcp
@@ -32,7 +32,7 @@
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - result.rc != 0
-      - '"FirewallD is not running" not in output.stdout''
+      - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
   - name: open docker Swarm overlay port on 7946/udp
@@ -40,7 +40,7 @@
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - result.rc != 0
-      - '"FirewallD is not running" not in output.stdout''
+      - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
 
   - name: open docker Swarm overlay port on 4789/udp
@@ -48,7 +48,7 @@
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - result.rc != 0
-      - '"FirewallD is not running" not in output.stdout''
+      - '"FirewallD is not running" not in output.stdout'
     notify: reload firewalld
   when: ansible_distribution == "openSUSE Leap"
 
