@@ -5,6 +5,7 @@
   changed_when: false
   register: docker_info
   tags:
+    - swarm_labels
     - skip_ansible_lint  # Suppressing the linter
 
 - name: Init "Swarm Mode" on the first manager.
