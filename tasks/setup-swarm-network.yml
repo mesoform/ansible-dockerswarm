@@ -20,7 +20,7 @@
     notify: reload firewalld
 
   - name: open docker Swarm management port on 2377/tcp
-    raw: firewall-cmd --add-port=2376/tcp --permanent
+    raw: firewall-cmd --add-port=2377/tcp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - output.rc != 0
@@ -28,7 +28,7 @@
     notify: reload firewalld
 
   - name: open docker Swarm overlay port on 7946/tcp
-    raw: firewall-cmd --add-port=2377/tcp --permanent
+    raw: firewall-cmd --add-port=7946/tcp --permanent
     changed_when: '"ALREADY_ENABLED" not in output.stdout'
     failed_when:
       - output.rc != 0
