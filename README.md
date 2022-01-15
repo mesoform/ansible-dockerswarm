@@ -24,12 +24,12 @@ None.
 Role Variables
 --------------
 
-Available variables are listed below, along with default values (see `[defaults/main.yml](defaults/main.yml)`):
+Available variables are listed below, along with default values (see [defaults/main.yml](defaults/main.yml)):
 
     docker_repo: "{{ docker_repo_ce_stable }}"
 
 The repository proving the Docker packages.
-Additional repositories are defined in `[vars/main.yml](vars/main.yml)` including the edge, test and nightly repositories.
+Additional repositories are defined in [vars/main.yml](vars/main.yml) including the edge, test and nightly repositories.
 To skip the configuration of the repository and use the system repositories set `skip_repo: true`.
 
     docker_package_name: "docker-ce"
@@ -48,7 +48,7 @@ Set it to `latest` to force the upgrade of the installed Docker package to the l
     docker_dependencies: "{{ default_docker_dependencies }}"
 
 Additional support packages to be installed alongside Docker by the role.
-See `[vars/RedHat.yml](vars/RedHat.yml)` and `[vars/Debian.yml](vars/Debian.yml)` for the definition of the `default_docker_dependencies` variable.
+See [vars/RedHat.yml](vars/RedHat.yml) and [vars/Debian.yml](vars/Debian.yml) for the definition of the `default_docker_dependencies` variable.
 
     docker_service_override: ""
     # docker_service_override: |
@@ -56,7 +56,7 @@ See `[vars/RedHat.yml](vars/RedHat.yml)` and `[vars/Debian.yml](vars/Debian.yml)
     # ExecStart=
     # ExecStart=/usr/bin/dockerd
 
-Contect written to the systemd unit drop-in overriding
+Content written to the systemd unit drop-in overriding
 the default Docker service definition.
 
     docker_service_state: "started"
@@ -66,7 +66,7 @@ State of the Docker service.
 
     docker_daemon_config: {}
 
-Dictionary of Docker deamon configuration options to be written to `/etc/docker/daemon.json`.
+Dictionary of Docker daemon configuration options to be written to `/etc/docker/daemon.json`.
 See [Daemon configuration file](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file) for the detailed documentation of the available options.
 
     docker_cli_package_name: "docker-ce-cli"
@@ -99,7 +99,7 @@ Set it to `latest` to force the upgrade of the installed containerd package to t
       [Service]
       ExecStartPre=
 
-Contect written to the systemd unit drop-in overriding
+Content written to the systemd unit drop-in overriding
 the default containerd service definition.
 
     containerd_service_state: "started"
@@ -167,7 +167,7 @@ You can define labels by `swarm_labels` variable, e.g:
 
     $ cat inventory
     ...
-    [docker_swarm_manager]
+    [docker_swarm_managers]
     swarm-01 swarm_labels=deploy
 
     [docker_swarm_worker]
@@ -202,7 +202,7 @@ Example Playbook
     swarm-02
     swarm-03
 
-    [docker_swarm_manager]
+    [docker_swarm_leader]
     swarm-01 swarm_labels=deploy
 
     [docker_swarm_worker]
