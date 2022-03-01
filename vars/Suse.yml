@@ -1,8 +1,9 @@
 ---
 
 python_pip_packages:
-  - python-pip
+  - python3-pip
   - python3-firewall
+  - python3-docker
 
 default_docker_dependencies: []
 containerd_package_name: containerd
