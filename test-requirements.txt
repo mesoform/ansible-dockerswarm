@@ -6,3 +6,4 @@ sh==1.12.14
 ansible>=7.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
 anyconfig>=0.10.0 # not directly required, pinned by Snyk to avoid a vulnerability
 setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+ansible-core>=2.12.0b1 # not directly required, pinned by Snyk to avoid a vulnerability
