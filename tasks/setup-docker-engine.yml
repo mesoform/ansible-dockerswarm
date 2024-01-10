@@ -50,7 +50,7 @@
     mode: 0755
     state: directory
 
-- name: Configure the Docker deamon.
+- name: Configure the Docker daemon.
   template:
     src: docker-daemon.json.j2
     dest: /etc/docker/daemon.json
