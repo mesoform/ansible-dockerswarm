@@ -11,3 +11,4 @@ skip_containerd: true
 skip_docker_py: true
 skip_cli: true
 docker_package_name: docker
+docker_buildx_repo: https://download.opensuse.org/repositories/home:dirkmueller:branches:Virtualization:containers/16.0/home:dirkmueller:branches:Virtualization:containers.repo
