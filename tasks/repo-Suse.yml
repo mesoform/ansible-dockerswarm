@@ -7,4 +7,4 @@
     auto_import_keys: yes
     overwrite_multiple: yes
     runrefresh: yes
-  when: ansible_distribution startswith('openSUSE Leap Micro')
+  when: ansible_distribution.startswith('openSUSE Leap Micro')
