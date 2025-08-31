@@ -2,7 +2,6 @@
 - name: Add the Docker buildx Zypper repository.
   community.general.zypper_repository:
     repo: "{{ docker_buildx_repo }}"
-    name: docker_buildx
     state: present
     auto_import_keys: yes
     overwrite_multiple: yes
