@@ -1,5 +1,10 @@
 ---
 
+- name:
+  set_fact:
+    ansible_os_family: "{{ ansible_distribution }}"
+  when: ansible_os_family == "openSUSE Leap Micro"
+
 # Variables setup
 - name: Include os-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
