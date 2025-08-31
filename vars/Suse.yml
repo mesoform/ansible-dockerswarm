@@ -5,6 +5,9 @@ python_pip_packages:
   - python3-firewall
   - python3-docker
 
+docker_package_conflicts:
+  - podman-docker
+
 default_docker_dependencies: []
 containerd_package_name: containerd
 skip_containerd: true
