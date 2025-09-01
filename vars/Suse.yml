@@ -10,10 +10,11 @@ docker_package_conflicts:
 
 default_docker_dependencies:
   - python311-docker
+  - python311-firewall
 
 containerd_package_name: containerd
 skip_containerd: true
-skip_docker_py: false
-skip_cli: false
+skip_docker_py: true
+skip_cli: true
 docker_package_name: docker
 docker_buildx_repo: https://download.opensuse.org/repositories/home:regataos/15.6/home:regataos.repo
