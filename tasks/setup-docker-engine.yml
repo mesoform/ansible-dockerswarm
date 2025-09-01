@@ -18,6 +18,7 @@
   package:
     name: "{{ docker_package_name }}{{ _docker_package_version | default('') }}"
     state: "{{ docker_package_state }}"
+  notify: Reboot the system
 
 - block:
 
@@ -31,6 +32,9 @@
         src: docker-override.conf.j2
         dest: "/etc/systemd/system/docker.service.d/override.conf"
       register: _docker_systemd_override
+
+    - name: Apply reboot immediately to enable latest update snapshot
+      ansible.builtin.meta: flush_handlers
 
     - name: Reload systemd and restart Docker.
       service:

@@ -23,3 +23,9 @@
   check_mode: no
   changed_when: false
   listen: reload firewalld
+
+- name: Reboot the system
+  listen: "Reboot the system"
+  become: true
+  ansible.builtin.reboot:
+    msg: "Rebooting system to apply changes"

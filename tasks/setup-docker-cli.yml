@@ -18,3 +18,4 @@
   package:
     name: "{{ docker_cli_package_name }}{{ _docker_cli_package_version | default('') }}"
     state: "{{ docker_cli_package_state }}"
+  notify: Reboot the system
