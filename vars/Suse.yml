@@ -8,7 +8,8 @@ python_pip_packages:
 docker_package_conflicts:
   - podman-docker
 
-default_docker_dependencies: []
+default_docker_dependencies:
+  - python313-docker
 containerd_package_name: containerd
 skip_containerd: true
 skip_docker_py: false
