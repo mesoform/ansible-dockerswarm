@@ -15,4 +15,4 @@ skip_docker_py: false
 skip_cli: false
 docker_package_name: docker
 docker_buildx_repo: https://download.opensuse.org/repositories/home:dirkmueller:branches:Virtualization:containers/16.0/home:dirkmueller:branches:Virtualization:containers.repo
-docker_python_repo: https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
+docker_python_repo: https://download.opensuse.org/distribution/leap/16.0/repo/oss/
