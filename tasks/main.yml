@@ -28,6 +28,9 @@
     name: "{{ docker_package_conflicts }}"
     state: absent
   when: docker_package_conflicts is defined
+  register: result
+  changed_when:
+    - '"Nothing to do" not in result.stdout'
   notify: Reboot the system
 
 - name: Install Ansible Docker dependencies
@@ -35,6 +38,9 @@
     name: "{{ ansible_dependencies }}"
     state: present
   when: not skip_containerd or not skip_engine
+  register: result
+  changed_when:
+    - '"Nothing to do" not in result.stdout'
   notify: Reboot the system
 
 - name: Install Docker dependencies.
@@ -42,6 +48,9 @@
     name: "{{ docker_dependencies }}"
     state: present
   when: not skip_containerd or not skip_engine
+  register: result
+  changed_when:
+    - '"Nothing to do" not in result.stdout'
   notify: Reboot the system
 
 - name: Install containerd

@@ -22,6 +22,8 @@
   failed_when:
     - result.stdout is defined
     - '"Problem occurred during or after installation or removal of packages" in result.stdout'
+  changed_when:
+    - '"Nothing to do" not in result.stdout'
   notify: Reboot the system
 
 - block:
