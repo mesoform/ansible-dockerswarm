@@ -28,18 +28,21 @@
     name: "{{ docker_package_conflicts }}"
     state: absent
   when: docker_package_conflicts is defined
+  notify: Reboot the system
 
 - name: Install Ansible Docker dependencies
   package:
     name: "{{ ansible_dependencies }}"
     state: present
   when: not skip_containerd or not skip_engine
+  notify: Reboot the system
 
 - name: Install Docker dependencies.
   package:
     name: "{{ docker_dependencies }}"
     state: present
   when: not skip_containerd or not skip_engine
+  notify: Reboot the system
 
 - name: Install containerd
   include_tasks: setup-containerd.yml
