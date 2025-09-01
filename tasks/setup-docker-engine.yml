@@ -67,6 +67,13 @@
 - name: Apply reboot immediately to enable latest update snapshot
   ansible.builtin.meta: flush_handlers
 
+- name: Wait for the reboot to complete if there was a change.
+  wait_for_connection:
+    connect_timeout: 10
+    sleep: 5
+    delay: 5
+    timeout: 300
+
 - name: Enable the Docker daemon service and start it.
   service:
     name: docker
