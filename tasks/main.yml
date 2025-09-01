@@ -29,6 +29,8 @@
     state: absent
   when: docker_package_conflicts is defined
   register: result
+  failed_when: 'result.stdout is defined 
+      and "Problem occurred during or after installation or removal of packages" in result.stdout'
   changed_when:
     - result.stdout is defined and not "Nothing to do" not in result.stdout
   notify: Reboot the system
@@ -39,6 +41,8 @@
     state: present
   when: not skip_containerd or not skip_engine
   register: result
+  failed_when: 'result.stdout is defined 
+      and "Problem occurred during or after installation or removal of packages" in result.stdout'
   changed_when:
     - result.stdout is defined and not "Nothing to do" not in result.stdout
   notify: Reboot the system
@@ -49,6 +53,8 @@
     state: present
   when: not skip_containerd or not skip_engine
   register: result
+  failed_when: 'result.stdout is defined 
+      and "Problem occurred during or after installation or removal of packages" in result.stdout'
   changed_when:
     - result.stdout is defined and not "Nothing to do" not in result.stdout
   notify: Reboot the system
