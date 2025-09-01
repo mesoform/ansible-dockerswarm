@@ -21,7 +21,7 @@
   register: result
   failed_when:
     - result.stdout is defined
-    - '"Problem occurred during or after installation or removal of packages" in result.stdout or "this requirement cannot be provided" in result.stdout'
+    - "Problem occurred during or after installation or removal of packages" in result.stdout or "this requirement cannot be provided" in result.stdout
   notify: Reboot the system
 
 - block:
