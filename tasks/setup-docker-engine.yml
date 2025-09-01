@@ -19,10 +19,8 @@
     name: "{{ docker_package_name }}{{ _docker_package_version | default('') }}"
     state: "{{ docker_package_state }}"
   register: result
-  failed_when: 'result.stdout is defined 
-    and "Problem occurred during or after installation or removal of packages" in result.stdout'
-  changed_when: 'result.stdout is defined
-    and "Nothing to do" not in result.stdout'
+  failed_when: result.cmd is defined and result.stdout is not defined
+  changed_when: result.cmd is not defined and result.stdout is defined
   notify: Reboot the system
 
 - block:
