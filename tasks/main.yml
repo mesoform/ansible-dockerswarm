@@ -30,8 +30,7 @@
   when: docker_package_conflicts is defined
   register: result
   changed_when:
-    - result.stdout is defined
-    - '"Nothing to do" not in result.stdout'
+    - result.stdout is defined and not "Nothing to do" not in result.stdout
   notify: Reboot the system
 
 - name: Install Ansible Docker dependencies
@@ -41,8 +40,7 @@
   when: not skip_containerd or not skip_engine
   register: result
   changed_when:
-    - result.stdout is defined
-    - '"Nothing to do" not in result.stdout'
+    - result.stdout is defined and not "Nothing to do" not in result.stdout
   notify: Reboot the system
 
 - name: Install Docker dependencies.
