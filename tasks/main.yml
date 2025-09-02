@@ -30,7 +30,7 @@
   when: docker_package_conflicts is defined
   register: result
   failed_when: result.cmd is defined and result.stdout is not defined
-  changed_when: result.cmd is not defined and result.stdout is defined
+  changed_when: result.cmd is defined and result.stdout is defined
   notify: Reboot the system
 
 - name: Install Ansible Docker dependencies
@@ -40,7 +40,7 @@
   when: not skip_containerd or not skip_engine
   register: result
   failed_when: result.cmd is defined and result.stdout is not defined
-  changed_when: result.cmd is not defined and result.stdout is defined
+  changed_when: result.cmd is defined and result.stdout is defined
   notify: Reboot the system
 
 - name: Install Docker dependencies.
@@ -50,7 +50,7 @@
   when: not skip_containerd or not skip_engine
   register: result
   failed_when: result.cmd is defined and result.stdout is not defined
-  changed_when: result.cmd is not defined and result.stdout is defined
+  changed_when: result.cmd is defined and result.stdout is defined
   notify: Reboot the system
 
 - name: Install containerd
