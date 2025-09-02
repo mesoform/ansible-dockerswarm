@@ -1,8 +1,7 @@
 ---
 
 # Packages needed for Ansible modules
-ansible_dependencies:
-- python3-docker
+ansible_dependencies: []
 
 # Repository to be used for the installation of the packages
 docker_repo: "{{ docker_repo_ce_stable }}"
