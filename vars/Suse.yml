@@ -18,3 +18,7 @@ skip_docker_py: true
 skip_cli: true
 docker_package_name: docker
 docker_buildx_repo: https://download.opensuse.org/repositories/home:regataos/15.6/home:regataos.repo
+docker_service_override: |
+  [Unit]
+  After=network-online.target
+  Wants=network-online.target
