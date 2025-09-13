@@ -19,8 +19,8 @@
     name: "{{ docker_package_name }}{{ _docker_package_version | default('') }}"
     state: "{{ docker_package_state }}"
   register: result
-  failed_when: result.cmd is defined and result.stdout is defined
-  changed_when: result.cmd is defined and result.stdout is not defined
+  failed_when: result.cmd is defined and result.stdout is not defined
+  changed_when: result.cmd is defined and result.stdout is defined
   notify: Reboot the system
 
 - block:
