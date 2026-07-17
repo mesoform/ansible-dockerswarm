@@ -2,7 +2,7 @@ molecule==2.22.0
 docker==4.2.0
 
 # see https://github.com/ansible-community/molecule/pull/2682
-sh==1.12.14
+sh==2.2.4
 ansible>=7.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
 anyconfig>=0.10.0 # not directly required, pinned by Snyk to avoid a vulnerability
 setuptools>=70.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
